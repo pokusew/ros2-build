@@ -1,0 +1,7 @@
+# currently used by ros-vsc-sync tool
+#   see https://github.com/pokusew/ubuntu-ros/blob/master/vscode/ros-vsc-sync.sh
+# in the future, it might be as well used by rh (https://github.com/pokusew/rh)
+# set RH_WORKSPACE_ROOT to point to your ROS workspace root (colcon or catkin)
+# RH_WORKSPACE_ROOT is relative to the project root (location of this file)
+# use "." if workspace root and project root are the same
+RH_WORKSPACE_ROOT="."

@@ -1,0 +1,9 @@
+repositories:
+  src/stage:
+    type: git
+    url: git@github.com:rtv/Stage.git
+    version: master
+  src/stage_ros2:
+    type: git
+    url: git@github.com:ymd-stella/stage_ros2.git
+    version: master

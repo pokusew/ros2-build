@@ -1,0 +1,88 @@
+Index: src/stage/CMakeLists.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/stage/CMakeLists.txt	(revision 281ed731ed56b23d0879a2c765d4a20824a6d58a)
++++ src/stage/CMakeLists.txt	(date 1617132878361)
+@@ -1,5 +1,5 @@
+ cmake_minimum_required( VERSION 2.8.7 FATAL_ERROR )
+-PROJECT(Stage)
++PROJECT(stage)
+ 
+ SET( V_MAJOR 4 )
+ SET( V_MINOR 3 )
+Index: src/stage_ros2/CMakeLists.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/stage_ros2/CMakeLists.txt	(revision a1158e3db70440e82cf18e2b477a48d15bc2c36e)
++++ src/stage_ros2/CMakeLists.txt	(date 1617132901939)
+@@ -1,6 +1,21 @@
+ cmake_minimum_required(VERSION 3.5)
+ project(stage_ros2)
+ 
++# Default to C99
++if (NOT CMAKE_C_STANDARD)
++	set(CMAKE_C_STANDARD 99)
++endif ()
++
++# Default to C++14
++if (NOT CMAKE_CXX_STANDARD)
++	set(CMAKE_CXX_STANDARD 14)
++endif ()
++
++if (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
++	add_compile_options(-Wall -Wextra -Wpedantic)
++endif ()
++
++# find dependencies
+ find_package(ament_cmake REQUIRED)
+ find_package(rclcpp REQUIRED)
+ find_package(rcutils REQUIRED)
+@@ -19,25 +34,25 @@
+ add_executable(stage_ros2 src/stage_ros2.cc)
+ # build
+ target_include_directories(stage_ros2
+-    PRIVATE ${STAGE_INCLUDE_DIRS} include)
++		PRIVATE ${STAGE_INCLUDE_DIRS} include)
+ target_link_libraries(stage_ros2
+-    PRIVATE ${STAGE_LIBRARIES})
++		PRIVATE ${STAGE_LIBRARIES})
+ ament_target_dependencies(stage_ros2
+-    PUBLIC 
+-    rclcpp
+-    rcutils
+-    cv_bridge
+-    image_transport
+-    geometry_msgs
+-    nav_msgs
+-    sensor_msgs
+-    stage
+-    std_msgs
+-    std_srvs
+-    tf2
+-    tf2_ros
+-    tf2_geometry_msgs)
++		PUBLIC
++		rclcpp
++		rcutils
++		cv_bridge
++		image_transport
++		geometry_msgs
++		nav_msgs
++		sensor_msgs
++		stage
++		std_msgs
++		std_srvs
++		tf2
++		tf2_ros
++		tf2_geometry_msgs)
+ install(TARGETS stage_ros2
+-    DESTINATION lib/${PROJECT_NAME})
++		DESTINATION lib/${PROJECT_NAME})
+ 
+-ament_package()
+\ No newline at end of file
++ament_package()
