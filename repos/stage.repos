@@ -1,9 +1,11 @@
+# Stage simulator and bindings for ROS 2
+# NOTE: use make patch-stage (after make clone-stage) to patch their build configs
 repositories:
-  src/stage:
+  stage:
     type: git
     url: git@github.com:rtv/Stage.git
     version: master
-  src/stage_ros2:
+  stage_ros2:
     type: git
     url: git@github.com:ymd-stella/stage_ros2.git
     version: master

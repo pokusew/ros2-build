@@ -1,18 +1,40 @@
-# ros2-additions
+# ros2-build
 
-This a ROS 2 workspace containing additional packages for ROS 2 (Foxy).
+This a ROS 2 workspace for building ROS 2 (Foxy) and/or additional packages (such as Stage simulator).
 
-TODO: document purpose, content, usage
+**🚧 NOTE:** This documentation will be improved. See also [my notes on Building ROS 2 on  NVIDIA Jetson TX2](https://github.com/pokusew/ubuntu-ros/blob/master/nvidia-jetson-tx2/SETUP.md#install-ros-2)
+(some parts will be merged here in the future).
 
 
 ## Installation
 
+### Usage
+
+The project is a normal colcon workspace. But it contains a [Makefile](./Makefile)
+to **automate** **cloning** the sources (using [vcstool](https://github.com/dirk-thomas/vcstool)),
+**patching** the sources and **building** and **cleaning** the workspace.
+
 **Requirements:**
 * https://github.com/dirk-thomas/vcstool
+* colcon and ROS 2 tools as described [here](https://docs.ros.org/en/foxy/Installation/Ubuntu-Development-Setup.html#system-setup) (TODO: document better)
+
+**make commands:**
+* `make clone-ros2`
+* `make clone-ros2-mini`
+* `make clone-additional`
+* `make clone-stage`
+* `make patch-stage`
+* `make build`
+* `make build-no-db`
+* `make clean`
+
+See the [Makefile](./Makefile) for detailed info.
 
 
-### Stage
+### stage
 
+Here are described some additional dependencies
+that needs to be installed when building _stage_ packages:
 * on macOS:
     * TODO
 * on Ubuntu 20.04.2:
@@ -23,10 +45,11 @@ TODO: document purpose, content, usage
     * `sudo apt install libfltk1.1-dev libjpeg-dev`
 
 
-### All
+### additional
 
+Here are described some additional dependencies
+that needs to be installed when building _additional_ packages:
 * on macOS: TODO
-
 * on NVIDIA Jetson TX2 Jetpack 4.5.1 (L4T 32.5.1) (Ubuntu 18.04.5):
   
     Run:
@@ -50,9 +73,9 @@ TODO: document purpose, content, usage
 ## Notes
 
 
-### Stage build warning
+### `stage` build warning
 
-TODO: Can we use GLVND for OpenGL and GLX for Stage build?
+TODO: Can we use GLVND for OpenGL and GLX for `stage` package build?
 
  ```
 --- stderr: stage                                
