@@ -2,11 +2,11 @@
 
 clone-all:
 	@echo "cloning all packages ..."
-	vcs import < all.repos
+	vcs import < repos/all.repos
 
 clone-stage:
 	@echo "cloning stage-related packages ..."
-	vcs import < stage.repos
+	vcs import < repos/stage.repos
 
 patch-stage:
 	@echo "patching stage-related packages ..."
