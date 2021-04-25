@@ -1,18 +1,22 @@
 # useful shortcuts
 
-clone-ros2:
+src:
+	@echo "creating src dir ..."
+	mkdir -p src
+
+clone-ros2: src
 	@echo "cloning ros2 packages ..."
 	vcs import src < repos/ros2.repos
 
-clone-ros2-mini:
+clone-ros2-mini: src
 	@echo "cloning ros2-mini packages ..."
 	vcs import src < repos/ros2-mini.repos
 
-clone-additional:
+clone-additional: src
 	@echo "cloning additional packages ..."
-	vcs import src < repos/all.repos
+	vcs import src < repos/additional.repos
 
-clone-stage:
+clone-stage: src
 	@echo "cloning stage-related packages ..."
 	vcs import src < repos/stage.repos
 
@@ -29,6 +33,9 @@ build-no-db:
 	colcon build --symlink-install
 
 clean:
-	rm -rf build/ install/ log/ compile_commands.json .vscode/
+	rm -rf build/ install/ log/ compile_commands.json .vscode/ .env
 
-.PHONY: clone-ros2 clone-ros2-mini clone-additional clone-stage patch-stage build build-no-db clean
+clean-all: clean
+	rm -rf src/
+
+.PHONY: clone-ros2 clone-ros2-mini clone-additional clone-stage patch-stage build build-no-db clean clean-all
