@@ -12,6 +12,10 @@ clone-ros2-mini: src
 	@echo "cloning ros2-mini packages ..."
 	vcs import src < repos/ros2-mini.repos
 
+clone-auto: src
+	@echo "cloning auto packages ..."
+	vcs import src < repos/auto.repos
+
 clone-additional: src
 	@echo "cloning additional packages ..."
 	vcs import src < repos/additional.repos
@@ -38,4 +42,4 @@ clean:
 clean-all: clean
 	rm -rf src/
 
-.PHONY: clone-ros2 clone-ros2-mini clone-additional clone-stage patch-stage build build-no-db clean clean-all
+.PHONY: clone-ros2 clone-ros2-mini clone-auto clone-additional clone-stage patch-stage build build-no-db clean clean-all

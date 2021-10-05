@@ -22,6 +22,7 @@ to **automate** **cloning** the sources (using [vcstool](https://github.com/dirk
 * `make clone-ros2`
 * `make clone-ros2-mini`
 * `make clone-additional`
+* `make clone-auto`
 * `make clone-stage`
 * `make patch-stage`
 * `make build`
