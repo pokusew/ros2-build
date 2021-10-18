@@ -1,0 +1,21 @@
+--- filesystem_helper.hpp	2021-10-19 01:08:16.000000000 +0200
++++ filesystem_helper.fixed.hpp	2021-10-19 01:09:13.000000000 +0200
+@@ -35,6 +35,9 @@
+ #ifndef PLUGINLIB__IMPL__FILESYSTEM_HELPER_HPP_
+ #define PLUGINLIB__IMPL__FILESYSTEM_HELPER_HPP_
+
++#ifdef __APPLE__ || __OSX__
++# include <Availability.h>
++#endif
+
+ #if defined(__has_include)
+ # if __has_include(<filesystem>) && __cplusplus >= 201703L
+@@ -49,7 +52,7 @@
+ }  // namespace pluginlib
+
+ #  define PLUGINLIB__IMPL__FILESYSYEM_HELPER__HAS_STD_FILESYSTEM
+-# elif __has_include(<experimental/filesystem>)
++# elif __has_include(<experimental/filesystem>) && (!defined(__MAC_OS_X_VERSION_MIN_REQUIRED) || __MAC_OS_X_VERSION_MIN_REQUIRED >= 101500)
+ // MSVC deprecates <experimental/filesystem> and in favor of <filesystem>
+ // use this macro to acknowledge this deprecation and unblock the build break
+ #  define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
