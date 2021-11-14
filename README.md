@@ -1,6 +1,6 @@
 # ros2-build
 
-This a ROS 2 workspace for building ROS 2 (Foxy) and/or additional packages (such as Stage simulator).
+This a ROS 2 workspace for building ROS 2 (Galactic) and/or additional packages (such as Stage simulator).
 
 **🚧 NOTE:** This documentation will be improved. See
 also [my notes on Building ROS 2 on NVIDIA Jetson TX2][jetson-tx2-ros2-build-notes]
