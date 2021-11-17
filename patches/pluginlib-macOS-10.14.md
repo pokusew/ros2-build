@@ -1,9 +1,16 @@
-# pluginlib build on macOS < 10.15
+# ROS 2 Foxy pluginlib build on macOS < 10.15
+
+**Note:** This only applies to the pluginlib **foxy** version. In the **galactic**, the problematic filesystem impl.
+header file was [replaced](https://github.com/ros/pluginlib/commit/202d1721036807ffb0f8fdc70a52d28b8c97e38f)
+in favor of [rcpputils's](https://github.com/ros2/rcpputils)
+[filesystem_helper.hpp](https://github.com/ros2/rcpputils/blob/master/include/rcpputils/filesystem_helper.hpp)
+and [filesystem_helper.cpp](https://github.com/ros2/rcpputils/blob/master/src/filesystem_helper.cpp), which do **not**
+do any feature detection (that's the thing that was broken in foxy) and instead always emulate `std::filesystem`.
 
 
 ## Problem
 
-ROS [pluginlib](https://github.com/ros/pluginlib) package tries to use `std::filesystem`
+ROS Foxy's [pluginlib](https://github.com/ros/pluginlib/tree/foxy) package tries to use `std::filesystem`
 or `std::experimental::filesystem`.
 
 However, when building pluginlib on macOS < 10.15 (e.g. macOS 10.14 Mojave), clang compiler
