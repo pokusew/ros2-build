@@ -7,29 +7,35 @@ also [my notes on Building ROS 2 on NVIDIA Jetson TX2][jetson-tx2-ros2-build-not
 (some parts will be merged here in the future).
 
 
-## Installation
-
-
-### Usage
+## Usage
 
 The project is a normal colcon workspace. But it contains a [Makefile](./Makefile)
 to **automate** **cloning** the sources (using [vcstool](https://github.com/dirk-thomas/vcstool)),
 **patching** the sources and **building** and **cleaning** the workspace.
 
-**Requirements:**
+
+### Requirements
+
 * https://github.com/dirk-thomas/vcstool
 * colcon and ROS 2 tools as described [here][ros2-tools-setup] _(TODO: document better)_
 
-**make commands:**
-* `make clone-ros2`
-* `make clone-ros2-mini`
-* `make clone-additional`
-* `make clone-auto`
-* `make clone-stage`
-* `make patch-stage`
-* `make build`
-* `make build-no-db`
-* `make clean`
+
+### Workflow
+
+1. Obtain the sources of packages you want to build (together):
+	* ROS 2
+		* `make clone-ros2` – ROS 2 Galactic packages for sources installation
+	* CTU's F1Tenth
+		* `make clone-auto-additional` – additional packages when ROS 2 apt binary packages are not available
+	* Stage simulator
+		* `make clone-stage` – stage packages (never available from apt)
+			* `make patch-stage` – patches from stage and stage_ros2 build configs
+			* `make clone-stage-additional` – additional packages when ROS 2 apt binary packages are not available
+2. Build the workspace using `colcon`. You can also use the following shortcuts:
+	* `make build`
+	* `make build-no-db`
+	* `make build-merge-install`
+	* `make clean`
 
 See the [Makefile](./Makefile) for detailed info.
 
@@ -40,25 +46,27 @@ Here are described some additional dependencies that needs to be installed when 
 
 * on macOS:
 	* TODO
-* on Ubuntu 20.04.2:
+* on Ubuntu 20.04:
 	* assuming that build tools like cmake and build-essentials are already installed
 	* these are already present: `libgl1-mesa-dev libglu1-mesa-dev libpng12-dev libtool` (`libpng16` also works)
 	* `sudo apt install libfltk1.1-dev`
-* on NVIDIA Jetson TX2 Jetpack 4.5.1 (L4T 32.5.1) (Ubuntu 18.04.5):
+* on NVIDIA Jetson TX2 Jetpack 4.5.x (L4T 32.5.x) (Ubuntu 18.04):
 	* `sudo apt install libfltk1.1-dev libjpeg-dev`
 
 
-### additional
+### stage-additional
 
-Here are described some additional dependencies that needs to be installed when building _additional_ packages:
+Here are described some additional dependencies that needs to be installed when building _stage-additional_ packages:
 
 * on macOS:
 
-  **If you are on macOS < 10.15, see [pluginlib build on macOS < 10.15](./patches/pluginlib-macOS-10.14.md).**
+  **TODO: Update notes for Galactic**
 
-  _TODO: Document adapting brew's boost-python3 formula for Python 3.8_
+  **Foxy: If you are on macOS < 10.15, see [pluginlib build on macOS < 10.15](./patches/pluginlib-macOS-10.14.md).**
 
-* on NVIDIA Jetson TX2 Jetpack 4.5.1 (L4T 32.5.1) (Ubuntu 18.04.5):
+  _TODO: Foxy: Document adapting brew's boost-python3 formula for Python 3.8_
+
+* on NVIDIA Jetson TX2 Jetpack 4.5.x (L4T 32.5.x) (Ubuntu 18.04):
 
   Run:
   ```bash

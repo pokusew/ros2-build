@@ -1,6 +1,7 @@
 # Most ROS 2 Galactic packages are provided only for Ubuntu 20.04 (focal)
 # but on Jetson TX2 we have Ubuntu 18.04 (bionic) so we need to build the missing packages ourselves.
 repositories:
+  # START: urg_node and its dependencies
   ros-drivers/urg_node:
     type: git
     url: https://github.com/ros-drivers/urg_node.git
@@ -21,3 +22,4 @@ repositories:
     type: git
     url: https://github.com/ros/diagnostics.git
     version: galactic
+  # END: urg_node and its dependencies

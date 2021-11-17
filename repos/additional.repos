@@ -1,6 +1,0 @@
-# because they are not in ROS 2 Galactic when built from sources (ros2.repos)
-repositories:
-  ros-perception/vision_opencv:
-    type: git
-    url: git@github.com:ros-perception/vision_opencv.git
-    version: ros2

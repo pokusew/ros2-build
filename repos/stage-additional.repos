@@ -1,0 +1,8 @@
+# stage_ros2 depends on cv_bridge which is part of the vision_opencv repo
+# and which is present in not the default ROS 2 Galactic sources installation (see ros2.repos)
+# however it is part of the binary installation
+repositories:
+  ros-perception/vision_opencv:
+    type: git
+    url: https://github.com/ros-perception/vision_opencv.git
+    version: ros2
