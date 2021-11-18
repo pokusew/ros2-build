@@ -12,22 +12,17 @@ Desktop.ini
 .atom/
 .vscode/
 
-# NetBeans
-nbproject/private/
-
 # JetBrains IDEs
 # see https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
-**/.idea/workspace.xml
-**/.idea/tasks.xml
-**/.idea/usage.statistics.xml
-**/.idea/shelf/
-**/.idea/httpRequests/
-**/.idea/dataSources/
-**/.idea/dataSources.local.xml
-captures
+# note: in the future, we might version it
+.idea/
 
 # common files
 *.log
+
+# local-only files (may be useful during development)
+*.local.*
+*.local
 
 
 ### PROJECT
@@ -40,8 +35,6 @@ captures
 # symlink to ws/build/compile_commands.json for easily opening the project
 # in CLion as "Compilation Database Project"
 /compile_commands.json
-# note: in the future, we might it version
-/.idea/
 
 # correct PYTHONPATH for VSCode's pylint and other tools
 .env
@@ -50,6 +43,7 @@ captures
 __pycache__
 *~
 *.pyc
+*.swp
 
 # packages
 /src/
