@@ -19,6 +19,11 @@ clone-auto-additional: src
 	@echo "cloning auto-additional packages ..."
 	vcs import src < repos/auto-additional.repos
 
+.PHONY: clone-custom
+clone-custom: src
+	@echo "cloning custom packages ..."
+	vcs import src < repos/custom.repos
+
 .PHONY: clone-stage
 clone-stage: src
 	@echo "cloning stage packages ..."

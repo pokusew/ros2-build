@@ -1,0 +1,14 @@
+# TODO: document
+repositories:
+  # START: vesc_driver and its dependencies
+  vesc:
+    type: git
+    url: https://github.com/pokusew/vesc.git
+    version: ros2-pokusew
+  # END: vesc_driver and its dependencies
+  # START: ros2_razor_imu and its dependencies
+  ros2_razor_imu:
+    type: git
+    url: https://github.com/pokusew/ros2_razor_imu.git
+    version: ros2
+  # END: ros2_razor_imu and its dependencies
