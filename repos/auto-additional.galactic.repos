@@ -20,7 +20,7 @@ repositories:
   ros/diagnostics:
     type: git
     url: https://github.com/ros/diagnostics.git
-    version: ros2-devel
+    version: galactic
   # END: urg_node and its dependencies
   # START: vesc_driver's dependencies
   ackermann_msgs:

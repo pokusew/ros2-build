@@ -1,6 +1,6 @@
 # ros2-build
 
-This a ROS 2 workspace for building ROS 2 (Galactic) and/or additional packages (such as Stage simulator).
+This a ROS 2 workspace for building ROS 2 together with additional packages from sources.
 
 **🚧 NOTE:** This documentation will be improved. See
 also [my notes on Building ROS 2 on NVIDIA Jetson TX2][jetson-tx2-ros2-build-notes]
@@ -22,16 +22,26 @@ to **automate** **cloning** the sources (using [vcstool](https://github.com/dirk
 
 ### Workflow
 
-1. Obtain the sources of packages you want to build (together):
-	* ROS 2
-		* `make clone-ros2` – ROS 2 Galactic packages for sources installation
+1. `make init`
+
+2. Obtain ROS 2 sources _(skip if you don't want to build ROS 2 from sources)_:
+   ```bash
+   # replace <distro> with distro name: master (for rolling), humble, galactic, foxy, etc.
+   wget https://raw.githubusercontent.com/ros2/ros2/<distro>/ros2.repos
+   vcs import src < ros2.repos
+   ```
+
+3. Obtain the sources of packages you want to build _(together with ROS 2)_:
 	* CTU's F1Tenth
-		* `make clone-auto-additional` – additional packages when ROS 2 apt binary packages are not available
+		* (rolling, humble) `make auto-additional` – additional packages when ROS 2 apt binary packages are not
+		  available or ROS 2 is built from sources
+		* (galactic) `make auto-additional.galactic` – additional packages when ROS 2 apt binary packages are not
+		  available or ROS 2 is built from sources
 	* Stage simulator
-		* `make clone-stage` – stage packages (never available from apt)
-			* `make patch-stage` – patches from stage and stage_ros2 build configs
-			* `make clone-stage-additional` – additional packages when ROS 2 apt binary packages are not available
-2. Build the workspace using `colcon`. You can also use the following shortcuts:
+		* make clone-stage-additional` – additional packages when ROS 2 apt binary packages are not available or ROS 2
+		  is built from sources
+
+4. Build the workspace using `colcon`. You can also use the following shortcuts:
 	* `make build`
 	* `make build-no-db`
 	* `make build-merge-install`
