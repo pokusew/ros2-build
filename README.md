@@ -27,18 +27,17 @@ to **automate** **cloning** the sources (using [vcstool](https://github.com/dirk
 2. Obtain ROS 2 sources _(skip if you don't want to build ROS 2 from sources)_:
    ```bash
    # replace <distro> with distro name: master (for rolling), humble, galactic, foxy, etc.
-   wget https://raw.githubusercontent.com/ros2/ros2/<distro>/ros2.repos
-   vcs import src < ros2.repos
+   vcs import src --input https://raw.githubusercontent.com/ros2/ros2/<distro>/ros2.repos
    ```
 
 3. Obtain the sources of packages you want to build _(together with ROS 2)_:
 	* CTU's F1Tenth
-		* (rolling, humble) `make auto-additional` – additional packages when ROS 2 apt binary packages are not
+		* (rolling, humble) `make clone-auto-additional` – additional packages when ROS 2 apt binary packages are not
 		  available or ROS 2 is built from sources
-		* (galactic) `make auto-additional.galactic` – additional packages when ROS 2 apt binary packages are not
+		* (galactic) `make clone-auto-additional.galactic` – additional packages when ROS 2 apt binary packages are not
 		  available or ROS 2 is built from sources
 	* Stage simulator
-		* make clone-stage-additional` – additional packages when ROS 2 apt binary packages are not available or ROS 2
+		* `make clone-stage-additional` – additional packages when ROS 2 apt binary packages are not available or ROS 2
 		  is built from sources
 
 4. Build the workspace using `colcon`. You can also use the following shortcuts:
