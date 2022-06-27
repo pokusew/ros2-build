@@ -27,8 +27,11 @@ to **automate** **cloning** the sources (using [vcstool](https://github.com/dirk
 2. Obtain ROS 2 sources _(skip if you don't want to build ROS 2 from sources)_:
    ```bash
    # replace <distro> with distro name: master (for rolling), humble, galactic, foxy, etc.
-   vcs import src --input https://raw.githubusercontent.com/ros2/ros2/<distro>/ros2.repos
+   make distro=galactic clone-ros
    ```
+   _Note:_ The make rule is merely a shortcut
+   for `vcs import src --input https://raw.githubusercontent.com/ros2/ros2/<distro>/ros2.repos` that also automatically
+   creates `src` directory if it does not exist.
 
 3. Obtain the sources of packages you want to build _(together with ROS 2)_:
 	* CTU's F1Tenth

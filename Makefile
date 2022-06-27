@@ -12,6 +12,11 @@ pull:
 	@echo "running vcs pull --nested ..."
 	vcs pull --nested
 
+.PHONY: clone-ros
+clone-ros: src
+	@echo "cloning packages for ROS 2 distribution '$(distro)' ..."
+	vcs import src --input https://raw.githubusercontent.com/ros2/ros2/$(distro)/ros2.repos
+
 .PHONY: clone-auto-additional
 clone-auto-additional: src
 	@echo "cloning auto-additional packages ..."
