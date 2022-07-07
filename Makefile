@@ -17,6 +17,11 @@ clone-ros: src
 	@echo "cloning packages for ROS 2 distribution '$(distro)' ..."
 	vcs import src --input https://raw.githubusercontent.com/ros2/ros2/$(distro)/ros2.repos
 
+.PHONY: clone-ros-force
+clone-ros-force: src
+	@echo "force cloning packages for ROS 2 distribution '$(distro)' ..."
+	vcs import src --force --input https://raw.githubusercontent.com/ros2/ros2/$(distro)/ros2.repos
+
 .PHONY: clone-auto-additional
 clone-auto-additional: src
 	@echo "cloning auto-additional packages ..."
@@ -51,6 +56,9 @@ build-merge-install:
 clean:
 	rm -rf build/ install/ log/ compile_commands.json .vscode/ .env
 
-.PHONY: clean-all
-clean-all: clean
+.PHONY: clean-src
+clean-src:
 	rm -rf src/
+
+.PHONY: clean-all
+clean-all: clean clean-src
