@@ -9,15 +9,15 @@ also [my notes on Building ROS 2 on NVIDIA Jetson TX2][jetson-tx2-ros2-build-not
 
 ## Usage
 
-The project is a normal colcon workspace. But it contains a [Makefile](./Makefile)
-to **automate** **cloning** the sources (using [vcstool](https://github.com/dirk-thomas/vcstool)),
+The project is a normal [colcon workspace][colcon-workspace]. But it contains a [Makefile](./Makefile)
+to **automate** **cloning** the sources (using [vcstool]),
 **patching** the sources and **building** and **cleaning** the workspace.
 
 
 ### Requirements
 
-* https://github.com/dirk-thomas/vcstool
-* colcon and ROS 2 tools as described [here][ros2-tools-setup] _(TODO: document better)_
+* [vcstool]
+* colcon and ROS 2 tools as described [here][ros2-tools-setup]
 
 
 ### Workflow
@@ -131,6 +131,12 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 ---
 ```
 
-[jetson-tx2-ros2-build-notes]: https://github.com/pokusew/ubuntu-ros/blob/master/nvidia-jetson-tx2/SETUP.md#install-ros-2
+[jetson-tx2-ros2-build-notes]: https://github.com/pokusew/ros-setup/blob/master/nvidia-jetson-tx2/SETUP.md#install-ros-2
 
-[ros2-tools-setup]: https://docs.ros.org/en/foxy/Installation/Ubuntu-Development-Setup.html#system-setup
+[ros2-tools-setup]: https://docs.ros.org/en/galactic/Installation/Alternatives/Ubuntu-Development-Setup.html#system-setup
+
+[colcon]: https://colcon.readthedocs.io/
+
+[colcon-workspace]: https://colcon.readthedocs.io/en/released/user/what-is-a-workspace.html
+
+[vcstool]: https://github.com/dirk-thomas/vcstool
