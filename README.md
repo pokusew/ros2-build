@@ -131,7 +131,7 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 ---
 ```
 
-[jetson-tx2-ros2-build-notes]: https://github.com/pokusew/ros-setup/blob/master/nvidia-jetson-tx2/SETUP.md#install-ros-2
+[jetson-tx2-ros2-build-notes]: https://github.com/pokusew/ros-setup/blob/main/nvidia-jetson-tx2/SETUP.md#install-ros-2
 
 [ros2-tools-setup]: https://docs.ros.org/en/galactic/Installation/Alternatives/Ubuntu-Development-Setup.html#system-setup
 
